@@ -14,6 +14,8 @@
     </div>
     <div id="sidebar">
       <button onclick="switchSection('notes')">Notes</button>
+      <button onclick="switchSection('images')">Images</button>
+      <button onclick="switchSection('camera')">Camera</button>
       <button onclick="switchSection('calendar')">Calendar</button>
       <button onclick="switchSection('timer')">Timer</button>
       <button onclick="switchSection('blog')">Blog</button>
@@ -24,24 +26,16 @@
         <input type="file" id="fileInput">
         <button onclick="saveNote()">Save Note</button>
       </div>
-      <div id="calendar-section" class="section">
-        <input type="date" id="calendarInput">
+      <div id="images-section" class="section">
+        <div id="imageList"></div>
       </div>
-      <div id="timer-section" class="section">
-        <div id="timerDisplay">00:00:00</div>
-        <button onclick="startTimer()">Start</button>
-        <button onclick="pauseTimer()">Pause</button>
-        <button onclick="resetTimer()">Reset</button>
+      <div id="camera-section" class="section">
+        <video id="cameraFeed" autoplay></video>
+        <button onclick="capturePhoto()">Capture Photo</button>
       </div>
-      <div id="blog-section" class="section">
-        <textarea id="blogInput" placeholder="Write your blog here..."></textarea>
-        <input type="file" id="blogFileInput">
-        <button onclick="saveBlog()">Publish Blog</button>
-      </div>
+      <!-- Rest of the sections -->
     </div>
   </div>
   <script src="script.js"></script>
 </body>
 </html>
-
-          
