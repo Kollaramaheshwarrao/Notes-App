@@ -25,7 +25,18 @@
 
     <script src="./script.js"></script>
     <script>
-        // Function to handle blog writing session
+        // Function to handle adding images
+        function imageSession() {
+            clearNotesList(); // Clear existing content
+            var imageInput = document.createElement('input');
+            imageInput.type = 'file';
+            imageInput.accept = 'image/*'; // Allow only image files
+            imageInput.multiple = true; // Allow multiple images to be selected
+            imageInput.addEventListener('change', handleImageSelection);
+            document.getElementById('notes-list').appendChild(imageInput);
+        }
+
+        // Function to handle blog writing
         function blogWritingSession() {
             clearNotesList(); // Clear existing content
             var blogTextArea = document.createElement('textarea');
@@ -33,56 +44,23 @@
             document.getElementById('notes-list').appendChild(blogTextArea);
         }
 
-        // Function to handle calendar session
+        // Function to handle file dropping
+        function fileDroppingSession() {
+            clearNotesList(); // Clear existing content
+            var fileDropZone = document.createElement('div');
+            fileDropZone.id = 'fileDropZone';
+            fileDropZone.innerHTML = 'Drop files here';
+            fileDropZone.addEventListener('drop', handleFileDrop);
+            fileDropZone.addEventListener('dragover', handleDragOver);
+            document.getElementById('notes-list').appendChild(fileDropZone);
+        }
+
+        // Function to handle calendar
         function calendarSession() {
             clearNotesList(); // Clear existing content
             var calendarInput = document.createElement('input');
             calendarInput.type = 'date';
             document.getElementById('notes-list').appendChild(calendarInput);
-        }
-
-        // Function to handle scheduling tasks session
-        function schedulingTaskSession() {
-            clearNotesList(); // Clear existing content
-            var taskInput = document.createElement('input');
-            taskInput.type = 'text';
-            taskInput.placeholder = 'Enter task...';
-            document.getElementById('notes-list').appendChild(taskInput);
-
-            var taskDeadline = document.createElement('input');
-            taskDeadline.type = 'date';
-            document.getElementById('notes-list').appendChild(taskDeadline);
-        }
-
-        // Function to handle writing session
-        function writingSession() {
-            clearNotesList(); // Clear existing content
-            var writingTextArea = document.createElement('textarea');
-            writingTextArea.placeholder = 'Write here...';
-            document.getElementById('notes-list').appendChild(writingTextArea);
-        }
-
-        // Function to handle file accessing session
-        function fileAccessingSession() {
-            clearNotesList(); // Clear existing content
-            var fileInput = document.createElement('input');
-            fileInput.type = 'file';
-            document.getElementById('notes-list').appendChild(fileInput);
-        }
-
-        // Function to handle image dropping session
-        function imageDroppingSession() {
-            clearNotesList(); // Clear existing content
-            var imageDropZone = document.createElement('div');
-            imageDropZone.id = 'imageDropZone';
-            imageDropZone.innerHTML = 'Drop images here';
-            imageDropZone.ondrop = function(event) {
-                dropHandler(event);
-            };
-            imageDropZone.ondragover = function(event) {
-                dragOverHandler(event);
-            };
-            document.getElementById('notes-list').appendChild(imageDropZone);
         }
 
         // Function to clear existing content in notes list
@@ -91,6 +69,32 @@
             while (notesList.firstChild) {
                 notesList.removeChild(notesList.firstChild);
             }
+        }
+
+        // Function to handle image selection
+        function handleImageSelection(event) {
+            var files = event.target.files;
+            for (var i = 0; i < files.length; i++) {
+                var image = document.createElement('img');
+                image.src = URL.createObjectURL(files[i]);
+                document.getElementById('notes-list').appendChild(image);
+            }
+        }
+
+        // Function to handle file drop
+        function handleFileDrop(event) {
+            event.preventDefault();
+            var files = event.dataTransfer.files;
+            for (var i = 0; i < files.length; i++) {
+                var fileItem = document.createElement('div');
+                fileItem.textContent = files[i].name;
+                document.getElementById('notes-list').appendChild(fileItem);
+            }
+        }
+
+        // Function to handle drag over for file drop
+        function handleDragOver(event) {
+            event.preventDefault();
         }
     </script>
 </body>
