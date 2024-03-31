@@ -1,1 +1,81 @@
+body {
+  background: linear-gradient(to bottom, #FF9933, #FFFFFF, #138808);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#header {
+  background-color: #138808;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+#sidebar {
+  background-color: #FF9933;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#sidebar button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #138808;
+  color: #fff;
+  cursor: pointer;
+}
+
+#main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+#notes-section textarea,
+#blog-section textarea {
+  width: 80%;
+  height: 200px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: none;
+}
+
+#notes-section input[type="file"],
+#blog-section input[type="file"] {
+  margin: 10px;
+}
+
+#timerDisplay {
+  font-size: 36px;
+  margin: 10px;
+}
+
+#timer-section button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #138808;
+  color: #fff;
+  cursor: pointer;
+}
 
