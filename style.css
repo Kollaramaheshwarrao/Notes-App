@@ -1,29 +1,80 @@
-// Display images
-function displayImages(images) {
-  var imageList = document.getElementById('imageList');
-  imageList.innerHTML = '';
-  images.forEach(function(imageURL) {
-    var img = document.createElement('img');
-    img.src = imageURL;
-    imageList.appendChild(img);
-  });
+body {
+  background: linear-gradient(to bottom, #FF9933, #FFFFFF, #138808);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-// Switch between sections
-function switchSection(section) {
-  var sections = document.getElementsByClassName('section');
-  for (var i = 0; i < sections.length; i++) {
-    sections[i].style.display = 'none';
-  }
-  document.getElementById(section + '-section').style.display = 'block';
+#container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
 
-  if (section === 'camera') {
-    startCamera();
-  } else {
-    stopCamera();
-  }
+#header {
+  background-color: #138808;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
 
-  if (section === 'images') {
-    displayImages(['image1.jpg', 'image2.jpg', 'image3.jpg']); // Replace with actual image URLs
-  }
+#sidebar {
+  background-color: #FF9933;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#sidebar button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #138808;
+  color: #fff;
+  cursor: pointer;
+}
+
+#main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+#notes-section textarea,
+#blog-section textarea {
+  width: 80%;
+  height: 200px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: none;
+}
+
+#notes-section input[type="file"],
+#blog-section input[type="file"] {
+  margin: 10px;
+}
+
+#timerDisplay {
+  font-size: 36px;
+  margin: 10px;
+}
+
+#timer-section button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #138808;
+  color: #fff;
+  cursor: pointer;
 }
