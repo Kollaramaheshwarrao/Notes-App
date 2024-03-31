@@ -55,4 +55,33 @@ function resetTimer() {
   timerRunning = false;
   document.getElementById('timerDisplay').textContent = '00:00:00';
 }
+// Display images
+function displayImages(images) {
+  var imageList = document.getElementById('imageList');
+  imageList.innerHTML = '';
+  images.forEach(function(imageURL) {
+    var img = document.createElement('img');
+    img.src = imageURL;
+    imageList.appendChild(img);
+  });
+}
+
+// Switch between sections
+function switchSection(section) {
+  var sections = document.getElementsByClassName('section');
+  for (var i = 0; i < sections.length; i++) {
+    sections[i].style.display = 'none';
+  }
+  document.getElementById(section + '-section').style.display = 'block';
+
+  if (section === 'camera') {
+    startCamera();
+  } else {
+    stopCamera();
+  }
+
+  if (section === 'images') {
+    displayImages(['image1.jpg', 'image2.jpg', 'image3.jpg']); // Replace with actual image URLs
+  }
+}
 
