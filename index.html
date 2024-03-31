@@ -3,99 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modern Note Taking App</title>
-  <link rel="stylesheet" href="./style.css">
+  <title>FutureNote</title>
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <div id="container">
-
-        <div id="list-header">
-            <div id="addNoteDiv" onclick="popup()">
-                <i class="fa-solid fa-plus"></i>
-            </div>
-            <div class="blankDiv"></div>
-            <div class="blankDiv"></div>
-        </div>
-        
-        <div id="list-container">
-            <ul id="notes-list"></ul>
-        </div>
+  <div id="container">
+    <div id="header">
+      <h1>FutureNote</h1>
     </div>
-
-    <script src="./script.js"></script>
-    <script>
-        // Function to handle adding images
-        function imageSession() {
-            clearNotesList(); // Clear existing content
-            var imageInput = document.createElement('input');
-            imageInput.type = 'file';
-            imageInput.accept = 'image/*'; // Allow only image files
-            imageInput.multiple = true; // Allow multiple images to be selected
-            imageInput.addEventListener('change', handleImageSelection);
-            document.getElementById('notes-list').appendChild(imageInput);
-        }
-
-        // Function to handle blog writing
-        function blogWritingSession() {
-            clearNotesList(); // Clear existing content
-            var blogTextArea = document.createElement('textarea');
-            blogTextArea.placeholder = 'Write your blog here...';
-            document.getElementById('notes-list').appendChild(blogTextArea);
-        }
-
-        // Function to handle file dropping
-        function fileDroppingSession() {
-            clearNotesList(); // Clear existing content
-            var fileDropZone = document.createElement('div');
-            fileDropZone.id = 'fileDropZone';
-            fileDropZone.innerHTML = 'Drop files here';
-            fileDropZone.addEventListener('drop', handleFileDrop);
-            fileDropZone.addEventListener('dragover', handleDragOver);
-            document.getElementById('notes-list').appendChild(fileDropZone);
-        }
-
-        // Function to handle calendar
-        function calendarSession() {
-            clearNotesList(); // Clear existing content
-            var calendarInput = document.createElement('input');
-            calendarInput.type = 'date';
-            document.getElementById('notes-list').appendChild(calendarInput);
-        }
-
-        // Function to clear existing content in notes list
-        function clearNotesList() {
-            var notesList = document.getElementById('notes-list');
-            while (notesList.firstChild) {
-                notesList.removeChild(notesList.firstChild);
-            }
-        }
-
-        // Function to handle image selection
-        function handleImageSelection(event) {
-            var files = event.target.files;
-            for (var i = 0; i < files.length; i++) {
-                var image = document.createElement('img');
-                image.src = URL.createObjectURL(files[i]);
-                document.getElementById('notes-list').appendChild(image);
-            }
-        }
-
-        // Function to handle file drop
-        function handleFileDrop(event) {
-            event.preventDefault();
-            var files = event.dataTransfer.files;
-            for (var i = 0; i < files.length; i++) {
-                var fileItem = document.createElement('div');
-                fileItem.textContent = files[i].name;
-                document.getElementById('notes-list').appendChild(fileItem);
-            }
-        }
-
-        // Function to handle drag over for file drop
-        function handleDragOver(event) {
-            event.preventDefault();
-        }
-    </script>
+    <div id="sidebar">
+      <button onclick="switchSection('notes')">Notes</button>
+      <button onclick="switchSection('calendar')">Calendar</button>
+      <button onclick="switchSection('timer')">Timer</button>
+      <button onclick="switchSection('blog')">Blog</button>
+    </div>
+    <div id="main">
+      <div id="notes-section" class="section">
+        <textarea id="noteInput" placeholder="Write your note here..."></textarea>
+        <input type="file" id="fileInput">
+        <button onclick="saveNote()">Save Note</button>
+      </div>
+      <div id="calendar-section" class="section">
+        <input type="date" id="calendarInput">
+      </div>
+      <div id="timer-section" class="section">
+        <div id="timerDisplay">00:00:00</div>
+        <button onclick="startTimer()">Start</button>
+        <button onclick="pauseTimer()">Pause</button>
+        <button onclick="resetTimer()">Reset</button>
+      </div>
+      <div id="blog-section" class="section">
+        <textarea id="blogInput" placeholder="Write your blog here..."></textarea>
+        <input type="file" id="blogFileInput">
+        <button onclick="saveBlog()">Publish Blog</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
+
+          
