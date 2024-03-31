@@ -11,13 +11,42 @@
     <div id="container">
 
         <div id="list-header">
+            <!-- Add Note Section -->
             <div id="addNoteDiv" onclick="popup()">
                 <i class="fa-solid fa-plus"></i>
             </div>
-            <div class="blankDiv"></div>
-            <div class="blankDiv"></div>
+            <!-- Google Search -->
+            <div>
+                <input type="text" id="searchInput" placeholder="Search...">
+                <button onclick="searchGoogle()">Search</button>
+            </div>
+            <!-- Calendar -->
+            <div>
+                <input type="date" id="calendarInput">
+            </div>
         </div>
         
+        <!-- Blog Writing -->
+        <textarea id="blogTextArea" rows="10" cols="50" placeholder="Write your blog here..."></textarea>
+        
+        <!-- Scheduling Tasks -->
+        <div id="taskScheduler">
+            <input type="text" id="taskInput" placeholder="Enter task...">
+            <input type="date" id="taskDeadline">
+            <button onclick="scheduleTask()">Add Task</button>
+        </div>
+        
+        <!-- File Accessing -->
+        <div>
+            <input type="file" id="fileInput">
+        </div>
+        
+        <!-- Image Dropping -->
+        <div id="imageDropZone" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)">
+            Drop Image Here
+        </div>
+        
+        <!-- List Container -->
         <div id="list-container">
             <ul id="notes-list"></ul>
         </div>
