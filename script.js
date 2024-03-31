@@ -84,4 +84,17 @@ function switchSection(section) {
     displayImages(['image1.jpg', 'image2.jpg', 'image3.jpg']); // Replace with actual image URLs
   }
 }
+// Save note
+function saveNote() {
+  var note = document.getElementById('noteInput').value;
+  // Here you can add the logic to save the note, for example, sending it to a server or storing it locally
+  console.log('Note saved:', note);
+}
+
+// Save blog
+function saveBlog() {
+  var blog = document.getElementById('blogInput').value;
+  // Here you can add the logic to save the blog, for example, sending it to a server or storing it locally
+  console.log('Blog saved:', blog);
+}
 
