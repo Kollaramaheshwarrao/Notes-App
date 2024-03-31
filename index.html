@@ -25,23 +25,9 @@
 
     <script src="./script.js"></script>
     <script>
-        // Function to handle adding images to notes and blog
-        function addImage(imageURL) {
-            var img = document.createElement('img');
-            img.src = imageURL;
-            document.getElementById('notes-list').appendChild(img);
-        }
-
-        // Function to handle drawing on notes and blog
-        function startDrawing() {
-            // Your drawing logic here
-            // Example: You can use canvas API to allow users to draw
-        }
-
         // Function to handle blog writing session
         function blogWritingSession() {
-            // Your blog writing logic here
-            // Example: You can provide a text area for users to write their blog
+            clearNotesList(); // Clear existing content
             var blogTextArea = document.createElement('textarea');
             blogTextArea.placeholder = 'Write your blog here...';
             document.getElementById('notes-list').appendChild(blogTextArea);
@@ -49,8 +35,7 @@
 
         // Function to handle calendar session
         function calendarSession() {
-            // Your calendar logic here
-            // Example: You can provide a date input field
+            clearNotesList(); // Clear existing content
             var calendarInput = document.createElement('input');
             calendarInput.type = 'date';
             document.getElementById('notes-list').appendChild(calendarInput);
@@ -58,8 +43,7 @@
 
         // Function to handle scheduling tasks session
         function schedulingTaskSession() {
-            // Your scheduling tasks logic here
-            // Example: You can provide input fields for task and deadline
+            clearNotesList(); // Clear existing content
             var taskInput = document.createElement('input');
             taskInput.type = 'text';
             taskInput.placeholder = 'Enter task...';
@@ -72,8 +56,7 @@
 
         // Function to handle writing session
         function writingSession() {
-            // Your writing logic here
-            // Example: You can provide a text area for general writing
+            clearNotesList(); // Clear existing content
             var writingTextArea = document.createElement('textarea');
             writingTextArea.placeholder = 'Write here...';
             document.getElementById('notes-list').appendChild(writingTextArea);
@@ -81,8 +64,7 @@
 
         // Function to handle file accessing session
         function fileAccessingSession() {
-            // Your file accessing logic here
-            // Example: You can provide a file input field
+            clearNotesList(); // Clear existing content
             var fileInput = document.createElement('input');
             fileInput.type = 'file';
             document.getElementById('notes-list').appendChild(fileInput);
@@ -90,8 +72,7 @@
 
         // Function to handle image dropping session
         function imageDroppingSession() {
-            // Your image dropping logic here
-            // Example: You can provide a drop zone for users to drop images
+            clearNotesList(); // Clear existing content
             var imageDropZone = document.createElement('div');
             imageDropZone.id = 'imageDropZone';
             imageDropZone.innerHTML = 'Drop images here';
@@ -102,6 +83,14 @@
                 dragOverHandler(event);
             };
             document.getElementById('notes-list').appendChild(imageDropZone);
+        }
+
+        // Function to clear existing content in notes list
+        function clearNotesList() {
+            var notesList = document.getElementById('notes-list');
+            while (notesList.firstChild) {
+                notesList.removeChild(notesList.firstChild);
+            }
         }
     </script>
 </body>
